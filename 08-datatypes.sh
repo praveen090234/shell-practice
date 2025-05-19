@@ -1,6 +1,6 @@
 #1/bin/bash 
 
-TIMESTAMP=${date}
+TIMESTAMP=$(date)
 
 echo "script executed at : $TIMESTAMP"
 
