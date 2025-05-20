@@ -2,4 +2,4 @@
 
 echo -e "\e[32m hello colurs \e[0"
 
-echo -e "no colours"
+echo "no colours"
