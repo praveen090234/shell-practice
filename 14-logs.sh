@@ -5,12 +5,13 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-LOGS_FOLDER="/var/log/shellscript-logs"
+LOGS_FOLDER="/var/log/shell-practice-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
-mkdir -p $LOGS_FOLDER
-echo "Script started executing at: $(date)" | tee -a $LOG_FILE
+mkdir -p $LOGS_FOLDER1 
+echo "script started executing at: $(date)" $>>$LOG_FILE
+
 
 if [ $USERID -ne 0 ]
 then
@@ -64,5 +65,5 @@ then
     dnf install nginx -y $>>$LOG_FILE
    $Validate $1 "nginx" $>>$LOG_FILE
 else
-    echo -e  "$Y nginx is already installed... nothing to do $N" | tee -a $LOG_FILE
+    echo -e  "$Y nginx is already installed... nothing to do $N" $>>$LOG_FILE
 fi
