@@ -11,7 +11,7 @@ then
     echo -e "$R Error: $N This user is not running with root access"
     exit 1
 else
-    echo "$G This user is running with root access $N"
+    echo -e "$G This user is running with root access $N"
      # exit form the script 
 fi
 
