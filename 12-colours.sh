@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo -e "\e[32m hello colurs \e[0"
+echo -e "\e[31m hello colours \e[0m"
 
 echo "no colours"
