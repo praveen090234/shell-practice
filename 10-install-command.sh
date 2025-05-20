@@ -10,7 +10,7 @@ else
     echo "User is running with root user"
 fi
 
-dnf install mysqlada -y
+dnf install mysql -y
 
 if [ $? -eq 0 ]
 then
