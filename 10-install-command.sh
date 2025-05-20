@@ -10,11 +10,11 @@ else
     echo "User is running with root user"
 fi
 
-dnf install mysql -y
+dnf install mysqlada -y
 
 if [ $? -eq 0 ]
 then
-    echo "installing mysql is..... success"
+    echo "installing mysqlq is..... success"
 else
     echo "installing mysql is..... failure"
     exit 1
