@@ -5,9 +5,10 @@ USERID=$(id -u)
 if [ $USERID -ne 0 ]
 then
     echo "This user is not running with root access"
+    exit 1
 else
     echo "This user is running with root access"
-    exit 1 # exit form the script 
+     # exit form the script 
 fi
 
 dnf list installed mysql #if ecit code is not equal to 0 we are going to install my sql 
@@ -22,6 +23,6 @@ then
         echo "installing mysql is ....... success"
     else 
         echo "installing mysql is ..... failure"
-        exit
+        exit 1
 else
     echo "mysql is already installed... nothing to do"
