@@ -19,7 +19,6 @@ if [ $1 -eq 0 ]
         echo "installing $2 is ..... failure"
         exit 1
     fi
-
 } 
 
 
