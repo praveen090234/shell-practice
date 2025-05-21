@@ -22,7 +22,7 @@ else
      # exit form the script 
 fi
 
-Validate () {
+Validate(){
 if [ $1 -eq 0 ]
     then
         echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
