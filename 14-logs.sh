@@ -22,7 +22,7 @@ else
      # exit form the script 
 fi
 
-Validate(){
+VALIDATE(){
 if [ $1 -eq 0 ]
     then
         echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
@@ -39,7 +39,7 @@ if [ $? -ne 0 ]
 then
     echo -e "$Y mysql is not installed.....going to install it $N" | tee -a $LOG_FILE
     dnf install mysql -y $>>$LOG_FILE
-    $Validate $? "mysql"
+    VALIDATE $? "mysql"
     
 else
     echo -e "$Y mysql is already installed... nothing to do $N" | tee -a $LOG_FILE
@@ -51,7 +51,7 @@ if [ $? -ne 0 ]
 then
     echo -e "$Y python3 is not installed.....going to install it" | tee -a $LOG_FILE
     dnf install python3 -y $>>$LOG_FILE
-    $Validate $? "python"
+    VALIDATE $? "python"
 else
     echo -e "$Y python3 is already installed... nothing to do $N" | tee -a $LOG_FILE
 fi
@@ -63,7 +63,7 @@ if [ $? -ne 0 ]
 then
     echo -e "$Y nginx is not installed.....going to install it $N" | tee -a $LOG_FILE
     dnf install nginx -y $>>$LOG_FILE
-    $Validate $? "nginx" 
+    VALIDATE $? "nginx" 
 else
     echo -e  "$Y nginx is already installed... nothing to do $N" | tee -a $LOG_FILE
 fi
