@@ -10,7 +10,7 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "script started executing at: $(date)" $>>$LOG_FILE
+echo "script started executing at: $(date)" &>>$LOG_FILE
 
 
 if [ $USERID -ne 0 ]
@@ -34,47 +34,38 @@ if [ $1 -eq 0 ]
 
 
 
-# dnf list installed mysql  $>>$LOG_FILE
+dnf list installed mysql  &>>$LOG_FILE
 
-# if [ $? -ne 0 ]
-# then
-#     echo -e "$Y mysql is not installed.....going to install it $N" | tee -a $LOG_FILE
-#     dnf install mysql -y $>>$LOG_FILE
-#     VALIDATE $? "mysql"
-    
-# else
-#     echo -e "$Y mysql is already installed... nothing to do $N" | tee -a $LOG_FILE
-# fi
-
-dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-    echo  "MySQL is not installed... going to install it" | tee -a $LOG_FILE
+    echo -e "$Y mysql is not installed.....going to install it $N" | tee -a $LOG_FILE
     dnf install mysql -y &>>$LOG_FILE
-    VALIDATE $? "MySQL"
+    VALIDATE $? "mysql"
+    
 else
-    echo -e "Nothing to do MySQL... $Y already installed $N" | tee -a $LOG_FILE
+    echo -e "$Y mysql is already installed... nothing to do $N" | tee -a $LOG_FILE
 fi
 
 
-dnf list installed python3 $>>$LOG_FILE
+
+dnf list installed python3 &>>$LOG_FILE
 
 if [ $? -ne 0 ]
 then
     echo -e "$Y python3 is not installed.....going to install it" | tee -a $LOG_FILE
-    dnf install python3 -y $>>$LOG_FILE
+    dnf install python3 -y &>>$LOG_FILE
     VALIDATE $? "python"
 else
     echo -e "$Y python3 is already installed... nothing to do $N" | tee -a $LOG_FILE
 fi
 
 
-dnf list installed nginx $>>$LOG_FILE
+dnf list installed nginx &>>$LOG_FILE
 
 if [ $? -ne 0 ]
 then
     echo -e "$Y nginx is not installed.....going to install it $N" | tee -a $LOG_FILE
-    dnf install nginx -y $>>$LOG_FILE
+    dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "nginx" 
 else
     echo -e  "$Y nginx is already installed... nothing to do $N" | tee -a $LOG_FILE
