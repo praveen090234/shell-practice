@@ -22,38 +22,40 @@ else
      # exit form the script 
 fi
 
-# VALIDATE(){
-# if [ $1 -eq 0 ]
-#     then
-#         echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
-#     else 
-#         echo -e "installing $2 is ..... $R failure $n" | tee -a $LOG_FILE
-#         exit 1
-#     fi
-# } 
-
 VALIDATE(){
-    if [ $1 -eq 0 ]
+if [ $1 -eq 0 ]
     then
-        echo -e "Installing $2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
-    else
-        echo -e "Installing $2 is ... $R FAILURE $N" | tee -a $LOG_FILE
+        echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
+    else 
+        echo -e "installing $2 is ..... $R failure $n" | tee -a $LOG_FILE
         exit 1
     fi
-}
+} 
 
 
-dnf list installed mysql  $>>$LOG_FILE
 
+# dnf list installed mysql  $>>$LOG_FILE
+
+# if [ $? -ne 0 ]
+# then
+#     echo -e "$Y mysql is not installed.....going to install it $N" | tee -a $LOG_FILE
+#     dnf install mysql -y $>>$LOG_FILE
+#     VALIDATE $? "mysql"
+    
+# else
+#     echo -e "$Y mysql is already installed... nothing to do $N" | tee -a $LOG_FILE
+# fi
+
+dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]
 then
-    echo -e "$Y mysql is not installed.....going to install it $N" | tee -a $LOG_FILE
-    dnf install mysql -y $>>$LOG_FILE
-    VALIDATE $? "mysql"
-    
+    echo  "MySQL is not installed... going to install it" | tee -a $LOG_FILE
+    dnf install mysql -y &>>$LOG_FILE
+    VALIDATE $? "MySQL"
 else
-    echo -e "$Y mysql is already installed... nothing to do $N" | tee -a $LOG_FILE
+    echo -e "Nothing to do MySQL... $Y already installed $N" | tee -a $LOG_FILE
 fi
+
 
 dnf list installed python3 $>>$LOG_FILE
 
