@@ -1,12 +1,12 @@
 #1/bin/bash
 
-NUM1=200
-NUM2=300
+NUM=$1
 
-SUM=$(($NUM1+$NUM2))
+if ($NUM -lt 100)
+then
+    "$NUM is lessthan 100"
+else
+    "$NUM is not lessthan 100"
+fi
 
-echo "SUM of $NUM1 & $NUM2 is :: $SUM"
-
-
-echo "script executed at: $(date)"
 
