@@ -34,7 +34,7 @@ if [ $1 -eq 0 ]
 } 
 
 
-for packages ${PACKAGES[@]}
+for packages in ${PACKAGES[@]}
 do
   dnf list installed $packages  &>>$LOG_FILE
   if [ $? -ne 0 ]
