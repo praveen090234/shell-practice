@@ -1,7 +1,8 @@
 #1/bin/bash
 
-echo "enter your pin number"
+MOVIES=("pushpa" "court" "thandel" "test")
 
-read -s PIN
+echo "first movie is  ${MOVIES[0]}"
+echo "last movie is ${MOVIES[3]}"
 
-echo "Pin number is : $PIN"
+echo "all the movies are ${MOVIES[@]}"
