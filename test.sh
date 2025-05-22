@@ -9,17 +9,22 @@ else
      echo "this user have root access"
 fi
 
+VALIDATE (){
+    if [ $1 -eq 0 ]
+    then
+        echo "$2 installation is successful"
+    else
+       echo "$2 installation is failure"
+    fi
+   
+}
+
 dnf list installed mysql
 if [ $? -ne 0 ] 
 then
     echo "Error: my sql is not installed...installing mysql"
     dnf install mysql -y
-    if [ $? -eq 0 ]
-    then
-        echo "mysql installation is successful"
-    else
-       echo "mysql installation is failure"
-    fi
+    $VALIDATE $1 "mysql"
 else
     echo "mysql is installed...nothing to do"
 fi
