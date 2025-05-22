@@ -1,12 +1,13 @@
 #1/bin/bash
 
-NUM=$1
+USER=$(id -u)
 
-if [ $NUM -lt 100 ]
-then
-    echo "$NUM is lessthan 100"
+if [ $USER -ne 0 ]
+then 
+     echo "this user have root access"
 else
-    echo "$NUM is not lessthan 100"
+     echo "this user need root access"
 fi
+
 
 
