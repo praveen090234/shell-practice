@@ -22,15 +22,25 @@ else
      # exit form the script 
 fi
 
+# VALIDATE(){
+# if [ $1 -eq 0 ]
+#     then
+#         echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
+#     else 
+#         echo -e "installing $2 is ..... $R failure $n" | tee -a $LOG_FILE
+#         exit 1
+#     fi
+# } 
+
 VALIDATE(){
-if [ $1 -eq 0 ]
+    if [ $1 -eq 0 ]
     then
-        echo -e "installing $2 is ....... $G success $N" | tee -a $LOG_FILE
-    else 
-        echo -e "installing $2 is ..... $R failure $n" | tee -a $LOG_FILE
+        echo -e "Installing $2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
+    else
+        echo -e "Installing $2 is ... $R FAILURE $N" | tee -a $LOG_FILE
         exit 1
     fi
-} 
+}
 
 
 dnf list installed mysql  $>>$LOG_FILE
